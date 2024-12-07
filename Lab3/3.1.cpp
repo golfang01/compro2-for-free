@@ -2,10 +2,10 @@
 
 // โครงสร้าง student
 struct student {
-    char name[20];
-    int age;
-    char sex; // เพศ ('M' สำหรับชาย, 'F' สำหรับหญิง, หรืออื่น ๆ)
-    float gpa; // เกรดเฉลี่ย
+    char name[20]; // ชื่อ
+    int age;       // อายุ
+    char sex;      // เพศ ('M' สำหรับชาย, 'F' สำหรับหญิง)
+    float gpa;     // ค่า GPA
 };
 
 // ฟังก์ชัน upgrade ใช้เพิ่ม gpa ตามเพศ
@@ -21,18 +21,28 @@ void upgrade(struct student *child) {
 }
 
 int main() {
-    struct student aboy;
-    
+    struct student person;
+
     // รับข้อมูลนักเรียน
+    printf("Enter name: ");
+    scanf("%s", person.name);  // รับชื่อ
+    printf("Enter age: ");
+    scanf("%d", &person.age);  // รับอายุ
     printf("Enter sex (M/F): ");
-    scanf(" %c", &aboy.sex);
+    scanf(" %c", &person.sex); // รับเพศ (ใส่ช่องว่างก่อน %c เพื่อข้ามช่องว่างก่อน)
     printf("Enter GPA: ");
-    scanf("%f", &aboy.gpa);
+    scanf("%f", &person.gpa);  // รับ GPA
+
+    printf("\nBefore upgrade:\n");
+    printf("Name: %s, Age: %d, Sex: %c, GPA: %.2f\n",
+           person.name, person.age, person.sex, person.gpa);
 
     // เรียกใช้ฟังก์ชัน upgrade
-    upgrade(&aboy);
+    upgrade(&person);
 
-    // แสดงผลลัพธ์
-    printf("Updated GPA: %.2f\n", aboy.gpa);
+    printf("\nAfter upgrade:\n");
+    printf("Name: %s, Age: %d, Sex: %c, GPA: %.2f\n",
+           person.name, person.age, person.sex, person.gpa);
+
     return 0;
 }
